@@ -4,14 +4,22 @@ import java.util.ArrayList;
 
 public class Estudiante{
     //Informacion del estudiante
-    public String matricula;
-    public String nombre;
-    public String apellido;
-    public String facultad;
-    public int edad;
-    public String direccion;
-    public String telefono;
-    public ArrayList<Paralelo> paralelos;
+    private String matricula;
+    private String nombre;
+    private String apellido;
+    private String facultad;
+    private int edad;
+    private String direccion;
+    private String telefono;
+    private ArrayList<Paralelo> paralelos;
+
+    public ArrayList<Paralelo> getParalelos() {
+        return paralelos;
+    }
+
+    public void setParalelos(ArrayList<Paralelo> paralelos) {
+        this.paralelos = paralelos;
+    }
     
     //Getter y setter de Matricula
 
@@ -77,51 +85,5 @@ public class Estudiante{
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    
-    //Calcula y devuelve la nota inicial contando examen, deberes, lecciones y talleres. El teorico y el practico se calcula por parcial.
-    public double CalcularNotaInicial(Paralelo p, double nexamen,double ndeberes, double nlecciones, double ntalleres){
-        double notaInicial=0;
-        for(Paralelo par:paralelos){
-            if(p.equals(par)){
-                double notaTeorico=(nexamen+ndeberes+nlecciones)*0.80;
-                double notaPractico=(ntalleres)*0.20;
-                notaInicial=notaTeorico+notaPractico;
-            }
-        }
-        return notaInicial;
-    }
-    
-    //Calcula y devuelve la nota final contando examen, deberes, lecciones y talleres. El teorico y el practico se calcula por parcial.
-    
-    public double CalcularNotaFinal(Paralelo p, double nexamen,double ndeberes, double nlecciones, double ntalleres){
-        double notaFinal=0;
-        for(Paralelo par:paralelos){
-            if(p.equals(par)){
-                double notaTeorico=(nexamen+ndeberes+nlecciones)*0.80;
-                double notaPractico=(ntalleres)*0.20;
-                notaFinal=notaTeorico+notaPractico;
-            }
-        }
-        return notaFinal;
-    }
-    
-    //Calcula y devuelve la nota inicial contando examen, deberes, lecciones y talleres. Esta nota es solo el promedio de las dos calificaciones anteriores.
-    public double CalcularNotaTotal(Paralelo p){
-        double notaTotal=0;
-        for(Paralelo par:paralelos){
-            if(p.equals(par)){
-                notaTotal=(p.getMateria().notaInicial+p.getMateria().notaFinal)/2;
-                
-            }
-        }
-        return notaTotal;
-        
-    }
-}
-        
-    
-    
-    
-            
-        
-        
+       
+}   
